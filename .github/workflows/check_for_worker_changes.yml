@@ -1,0 +1,21 @@
+name: Notify for Worker Changes
+on: [pull_request]
+jobs:
+  worker-check:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    steps:
+      - name: Get Changed Files
+        id: changed
+        uses: foodee/pr-includes-file-change@master
+        with:
+          paths: .*worker.rb
+      - if: steps.changed.outputs.matched == 'true'
+        name: Notify via PR Comment
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: "A worker file is being modified. Please check the documentation HERE (TBD) to make sure you have accounted for the deploy process."
+          check_for_duplicate_msg: true
