@@ -1,5 +1,7 @@
 name: Comment on PR with Worker Changes
-on: pull_request
+on: 
+- pull_request_target
+
 jobs:
   example:
     name: Worker Warning Comment
