@@ -1,0 +1,14 @@
+name: Comment on PR with Worker Changes
+on: pull_request
+jobs:
+  example:
+    name: Worker Warning Comment
+    runs-on: ubuntu-latest
+    steps:
+      - name: comment PR
+        uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: "You are modifying a worker file. Please ensure you have accounted for the deploy. (Verbiage TBD)"
+          check_for_duplicate_msg: true
