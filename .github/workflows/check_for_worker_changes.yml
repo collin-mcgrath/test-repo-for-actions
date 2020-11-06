@@ -10,7 +10,7 @@ jobs:
         id: changed
         uses: foodee/pr-includes-file-change@master
         with:
-          paths: app/workers/**/*.rb
+          paths: .*worker.rb
       - if: steps.changed.outputs.matched == 'true'
         name: Notify via PR Comment
         uses: unsplash/comment-on-pr@master
