@@ -1,7 +1,7 @@
 name: Notify for Worker Changes
 on: [pull_request]
 jobs:
-  test:
+  worker-check:
     runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
